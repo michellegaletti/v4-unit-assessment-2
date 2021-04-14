@@ -3,30 +3,30 @@
 //DO NOT EDIT CODE BELOW
 let foods = [
   {
-    name: 'bread',
+    name: "bread",
     carbs: 36,
     protein: 8,
     fat: 2,
   },
   {
-    name: 'mayo mustard mix',
+    name: "mayo mustard mix",
     carbs: 0,
     protein: 0,
     fat: 10,
   },
   {
-    name: 'turkey',
+    name: "turkey",
     carbs: 0,
     protein: 25,
     fat: 1,
   },
   {
-    name: 'cheese',
+    name: "cheese",
     carbs: 0,
     protein: 5,
     fat: 7,
   },
-]
+];
 //DO NOT EDIT THE CODE ABOVE
 
 /*
@@ -35,7 +35,11 @@ let foods = [
   and then adding the results together. 
 */
 
-//CODE HERE
+foods.forEach(
+  (element) =>
+    (element.calories =
+      element.carbs * 4 + element.protein * 4 + element.fat * 9)
+);
 
 //////////////////////////////////PROBLEMS 2-4//////////////////////////////////
 /*
@@ -46,31 +50,31 @@ let foods = [
 //DO NOT EDIT CODE BELOW
 const products = [
   {
-    name: 'backpack',
-    color: ['red', 'yellow'],
+    name: "backpack",
+    color: ["red", "yellow"],
     price: 500,
   },
   {
-    name: 'shirt',
-    color: ['blue'],
+    name: "shirt",
+    color: ["blue"],
     price: 400,
   },
   {
-    name: 'shoes',
-    color: ['red'],
+    name: "shoes",
+    color: ["red"],
     price: 1200,
   },
   {
-    name: 'socks',
-    color: ['yellow', 'blue'],
+    name: "socks",
+    color: ["yellow", "blue"],
     price: 200,
   },
   {
-    name: 'pants',
-    color: ['blue', 'red'],
+    name: "pants",
+    color: ["blue", "red"],
     price: 1000,
   },
-]
+];
 //DO NOT EDIT CODE ABOVE
 
 ////////////////////PROBLEM 2////////////////////
@@ -80,7 +84,10 @@ const products = [
   Save the copy to a new variable called 'saleProducts'.
 */
 
-//CODE HERE
+const saleProducts = products.map((element) => ({
+  ...element,
+  price: element.price * 0.75,
+}));
 
 ////////////////////PROBLEM 3////////////////////
 /*
@@ -90,7 +97,9 @@ const products = [
   (Hint: look up the array method 'includes' on MDN)
 */
 
-//CODE HERE
+const blueProducts = saleProducts.filter((element) =>
+  element.color.includes("blue")
+);
 
 ////////////////////PROBLEM 4////////////////////
 /*
@@ -99,7 +108,9 @@ const products = [
   Save the result to a variable called orderTotal.
 */
 
-//CODE HERE
+const orderTotal = blueProducts.reduce((acc, curr) => {
+  return acc + curr.price;
+}, 0);
 
 //////////////////////////////////PROBLEMS 5-8//////////////////////////////////
 /*
@@ -109,18 +120,18 @@ const products = [
 
 //DO NOT EDIT CODE BELOW
 const contactInfo = {
-  name: 'Helen',
+  name: "Helen",
   phoneNumber: 1234445555,
-  email: 'helen@mymail.com',
-}
+  email: "helen@mymail.com",
+};
 
 const shippingInfo = {
-  name: 'Helen',
-  street: '100 E. Main Street',
-  city: 'Anytown',
-  state: 'AZ',
+  name: "Helen",
+  street: "100 E. Main Street",
+  city: "Anytown",
+  state: "AZ",
   zipCode: 85004,
-}
+};
 //DO NOT EDIT CODE ABOVE
 
 ////////////////////PROBLEM 5////////////////////
@@ -129,7 +140,7 @@ const shippingInfo = {
   that combines the contactInfo and shippingInfo objects.
 */
 
-//CODE HERE
+const helensInfo = Object.assign(contactInfo, shippingInfo);
 
 ////////////////////PROBLEM 6////////////////////
 /*
@@ -138,14 +149,16 @@ const shippingInfo = {
   Overwrite the name property to 'Ellen' and the email address to 'ellen@email.com'.
 */
 
-//CODE HERE
+const ellensInfo = { ...helensInfo };
+ellensInfo.name = "Ellen";
+ellensInfo.email = "ellen@email.com";
 
 ////////////////////PROBLEM 7////////////////////
 /* 
   Save Ellen's email to a new variable using destructuring.
 */
 
-//CODE HERE
+const { email } = ellensInfo;
 
 ////////////////////PROBLEM 8////////////////////
 /*
@@ -153,7 +166,7 @@ const shippingInfo = {
   from shippingInfo to new variables using destructuring.
 */
 
-//CODE HERE
+const { zipCode, state } = shippingInfo;
 
 //////////////////////////////////PROBLEMS 9-11//////////////////////////////////
 /*
@@ -162,51 +175,51 @@ const shippingInfo = {
 
 //DO NOT EDIT CODE BELOW
 const userInfo = {
-  name: 'gn@rly_c0der_007',
-  password: 'reallySuperSecret1',
+  name: "gn@rly_c0der_007",
+  password: "reallySuperSecret1",
   settings: {
-    theme: 'dark',
+    theme: "dark",
     fontSize: 14,
     alerts: false,
   },
-  topics: ['food', 'hiking', 'gaming', 'tech'],
+  topics: ["food", "hiking", "gaming", "tech"],
   comments: [
     {
-      post: 'New Phones Coming in September',
-      comment: 'Excited to get one of these!',
+      post: "New Phones Coming in September",
+      comment: "Excited to get one of these!",
       upvotes: 5,
       responses: [
         {
           userId: 3827,
-          response: 'Me too!',
+          response: "Me too!",
         },
         {
           userId: 1040,
-          response: 'Want to learn about the pyramid scheme I bought into?',
+          response: "Want to learn about the pyramid scheme I bought into?",
         },
       ],
     },
     {
-      post: 'Best Hiking in Your Town',
-      comment: 'Trail #402 is closed in the winter',
+      post: "Best Hiking in Your Town",
+      comment: "Trail #402 is closed in the winter",
       upvotes: 100,
       responses: [
         {
           userId: 1084,
-          response: 'Thanks for the info',
+          response: "Thanks for the info",
         },
         {
           userId: 5498,
-          response: 'You saved me a trip out there, thank you!',
+          response: "You saved me a trip out there, thank you!",
         },
         {
           userId: 3597,
-          response: 'Good to know',
+          response: "Good to know",
         },
       ],
     },
   ],
-}
+};
 //DO EDIT CODE ABOVE
 
 ////////////////////PROBLEM 9////////////////////
@@ -215,7 +228,7 @@ const userInfo = {
   using dot notation.
 */
 
-//CODE HERE
+const shouldAlert = userInfo.settings.alerts;
 
 ////////////////////PROBLEM 10////////////////////
 /*
@@ -223,7 +236,7 @@ const userInfo = {
   using dot and/or bracket notation.
 */
 
-//CODE HERE
+const topic = userInfo.topics[userInfo.topics.length - 1];
 
 ////////////////////PROBLEM 11////////////////////
 /*
@@ -231,7 +244,7 @@ const userInfo = {
   gn@rly_c0der_007's 2nd comment using dot/bracket notation.
 */
 
-//CODE HERE
+const commenterId = userInfo.comments[1].responses[0].userId;
 
 ////////////////////PROBLEM 12////////////////////
 /*
@@ -250,7 +263,19 @@ const userInfo = {
       - create at least 2 kid objects
 */
 
-//CODE HERE
+const person = {
+  name: "Michelle",
+  age: 22,
+  jobs: ["TA", "Student Scientist", "Junior Software Engineer"],
+  birthday: function () {
+    return (this.age += 1);
+  },
+  favorites: { color: "green", number: 16, book: "Hunger Games" },
+  kids: [
+    { name: "Kaila", age: 2 },
+    { name: "Ali", age: 5 },
+  ],
+};
 
 //////////////////////////////////PROBLEMS 13-14//////////////////////////////////
 /*
@@ -265,18 +290,18 @@ const userInfo = {
 */
 
 const workout = {
-  type: 'strength training',
+  type: "strength training",
   duration: 45,
   complete: false,
   doWorkout: function () {
-    return (this.complete = true)
+    return (this.complete = true);
   },
-}
+};
 
 //let context1 = myFunc
 //let context1 = window
 //let context1 = global
-// let context1 = workout
+let context1 = workout;
 
 ////////////////////PROBLEM 14////////////////////
 /*
@@ -285,10 +310,10 @@ const workout = {
 */
 
 function myFunc() {
-  return this
+  return this;
 }
 
 //let context2 = myFunc
-// let context2 = window
+let context2 = window;
 //let context2 = global
 //let context2 = workout
